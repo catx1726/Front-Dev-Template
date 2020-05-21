@@ -1,7 +1,7 @@
 {
-  "name": "white-noise",
+  "name": "nuxt-template",
   "version": "1.0.0",
-  "description": "白噪音网站",
+  "description": "nuxt-template",
   "author": "catx1726",
   "private": true,
   "scripts": {
