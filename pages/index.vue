@@ -6,7 +6,17 @@
 
 <script>
 export default {
-  components: {}
+  components: {},
+  data() {
+    return {
+      title: 'Home'
+    }
+  },
+  head() {
+    return {
+      title: this.title
+    }
+  }
 }
 </script>
 
