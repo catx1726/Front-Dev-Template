@@ -1,5 +1,5 @@
 <template>
-  <div class="header-container">
+  <div class="header_container">
     <v-btn v-for="item in navList" :key="item.link" text :to="item.link">{{ item.text }}</v-btn>
   </div>
 </template>
@@ -35,7 +35,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.header-container {
+.header_container {
   height: 10vh;
   display: flex;
   justify-content: flex-end;

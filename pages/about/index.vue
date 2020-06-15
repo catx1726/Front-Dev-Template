@@ -1,5 +1,5 @@
 <template>
-  <div class="about-container">About</div>
+  <div class="about_container">About</div>
 </template>
 
 <script>
@@ -31,7 +31,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.about-container {
+.about_container {
   background-size: contain;
   background-position: center;
   background-image: url('/imgs/TV-106 七宝.png');

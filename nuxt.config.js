@@ -65,10 +65,17 @@ export default {
    */
   axios: {
     proxy: true,
-    prefix: 'localhost:3000'
+    credentials: true
   },
   proxy: {
-    changeOrigin: true
+    changeOrigin: true,
+    '/bing': {
+      target: 'http://cn.bing.com', // 代理地址 await this.$axios.$get('/bing/HPImageArchive.aspx?format=js&idx=0&n=1')
+      changeOrigin: true,
+      pathRewrite: {
+        '^/bing': '' // 将 /bing 替换掉
+      }
+    }
   },
   /*
    ** vuetify module configuration

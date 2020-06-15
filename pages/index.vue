@@ -1,5 +1,5 @@
 <template>
-  <main class="index-container">
+  <main class="index_container">
     Index
   </main>
 </template>
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.index-container {
+.index_container {
   background-size: contain;
   background-position: center;
   background-image: url('/imgs/TV-80 玲.png');

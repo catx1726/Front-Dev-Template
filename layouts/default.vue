@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <MyHeader />
-    <Nuxt class="content-container" />
+    <Nuxt class="content_container" />
     <MyFooter />
   </v-app>
 </template>
@@ -21,7 +21,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.content-container {
+.content_container {
   height: 80vh;
   font-size: 100px;
   display: flex;

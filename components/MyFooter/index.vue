@@ -1,5 +1,5 @@
 <template>
-  <div class="footer-container">
+  <div class="footer_container">
     <v-btn
       v-ripple="{ center: true, class: 'blue--text text--lighten-3 ' }"
       color="black"
@@ -35,7 +35,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.footer-container {
+.footer_container {
   height: 10vh;
   display: flex;
   justify-content: flex-end;

@@ -1,0 +1,17 @@
+$base-ft: 1rem;
+$ft-size: (1, 2, 3, 4, 5);
+$ft-wt: (
+  light: 100,
+  bold: 700
+);
+
+@each $name, $val in $ft-wt {
+  .ft-wt-#{$name} {
+    font-weight: $val;
+  }
+}
+@each $val in $ft-size {
+  .ft-#{$val} {
+    font-size: $val * $base-ft;
+  }
+}
