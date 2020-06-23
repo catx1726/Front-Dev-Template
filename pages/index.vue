@@ -12,6 +12,10 @@ export default {
       title: 'Home'
     }
   },
+  created() {
+    console.log('test huksy')
+  },
+  methods() {},
   head() {
     return {
       title: this.title

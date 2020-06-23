@@ -9,7 +9,9 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "eslint:fix": "eslint \"*.{vue,js,ts}\" --fix",
+    "format": "prettier --write \"./**/*.{js,jsx,css,less,html}\""
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
@@ -37,7 +39,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts,js,css,less,html}": [
+    "*.{ts,js,css,less,html,vue}": [
       "npm run format",
       "npm run eslint:fix",
       "git add ."
