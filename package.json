@@ -27,6 +27,20 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
     "prettier": "^1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js,css,less,html}": [
+      "npm run format",
+      "npm run eslint:fix",
+      "git add ."
+    ]
   }
 }
