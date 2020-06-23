@@ -1,6 +1,38 @@
-# Nuxt-Template
+## Header
 
-> 预配有 Vuex / Axios / layout / eslint / prettier
+[toc]
+
+## 框架选择
+
+1. 目前选择 Vue
+
+## UI 库选择
+
+1. 后台风格使用 ElementUI
+2. 前台风格使用 Vuetify
+
+## 代码检查
+
+1. JavaScript 使用 Eslint
+2. 风格方面 使用 Prettier
+3. CodeReview 使用 lint-stage + husky
+
+## 代码风格
+
+1. Vue 参考 [Vue 风格指南](https://cn.vuejs.org/v2/style-guide)
+2. CSS / HTML / JS / IMGS [腾讯前端风格指南](http://alloyteam.github.io/CodeGuide/)
+
+## 兼容性明确
+
+1.  降级式，为现代浏览器提供最好的体验，而旧浏览器则退而求之次，保证大概的功能
+
+## 看板选择
+
+1. Tower
+
+## 开发模式
+
+1. 敏捷开发
 
 ## Build Setup
 
@@ -19,4 +51,4 @@ $ npm run start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+## Footer
