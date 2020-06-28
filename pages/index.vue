@@ -12,10 +12,7 @@ export default {
       title: 'Home'
     }
   },
-  created() {
-    console.log('test huksy')
-  },
-  methods() {},
+  created() {},
   head() {
     return {
       title: this.title

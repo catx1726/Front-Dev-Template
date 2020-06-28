@@ -105,6 +105,15 @@ export default {
     /*
      ** You can extend webpack config here
      */
+
+    postcss: {
+      plugins: {},
+      preset: {
+        autoprefixer: {
+          grid: true
+        }
+      }
+    },
     extend(config, ctx) {}
   }
 }
