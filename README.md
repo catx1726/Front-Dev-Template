@@ -24,7 +24,7 @@
 
 ## 兼容性明确
 
-1.  降级式，为现代浏览器提供最好的体验，而旧浏览器则退而求之次，保证大概的功能
+1. 降级式，为现代浏览器提供最好的体验，而旧浏览器则退而求之次，保证大概的功能
 
 ## 看板选择
 
@@ -36,7 +36,7 @@
 
 ## 待添加
 
-1. **[autoprefixer](https://github.com/postcss/autoprefixer)**
+~~1. **[autoprefixer](https://github.com/postcss/autoprefixer)**~~
 
 ## Build Setup
 
