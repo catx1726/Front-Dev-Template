@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+import dotenv from 'dotenv'
+dotenv.config()
 
 export default {
   mode: 'universal',
@@ -55,10 +57,47 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    // Doc: https://auth.nuxtjs.org/guide/setup.html
+    '@nuxtjs/auth',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources'
   ],
+
+  /* Auth module config */
+  auth: {
+    redirect: {
+      // callback: '/callback',
+      logout: '/login'
+    },
+    strategies: {
+      local: {
+        /*
+          不指定 endpoint 则默认请求地址为: xxxxx/api/auth/login
+          返回一个 token.accessToken 是有效部分，且写入 store 中，暂时不知道需不需要手动存入到 cookie
+          store 对象为 auth{...} login 成功之后 会自动调用 xxxx/api/auth/user，返回一个 user
+          video https://www.bilibili.com/video/BV1M7411e76Q
+          config_code https://github.com/topfullstack/topfullstack/blob/master/web/nuxt.config.js
+          login_code https://github.com/topfullstack/topfullstack/blob/master/web/layouts/default.vue
+        */
+        token: {
+          property: 'token.accessToken' // 设置为 false 直接接受返回值
+        }
+      },
+      localRefresh: {
+        scheme: 'refresh',
+        token: {
+          property: 'token.accessToken',
+          maxAge: 15
+        },
+        refreshToken: {
+          property: 'token.refreshToken',
+          data: 'refreshToken',
+          maxAge: false
+        }
+      }
+    }
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

@@ -1,7 +1,8 @@
 export const state = () => ({
   navList: [
     { link: '/', text: '首页' },
-    { link: '/about', text: '关于' }
+    { link: '/about', text: '关于' },
+    { link: '/securePage', text: '权限' }
   ]
 })
 
