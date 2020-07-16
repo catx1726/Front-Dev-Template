@@ -110,7 +110,8 @@ export default {
       plugins: {},
       preset: {
         autoprefixer: {
-          grid: true
+          /* 参考 https://github.com/browserslist/browserslist#queries */
+          overrideBrowserslist: ['defaults', 'ie >= 9', '> 5%', 'last 2 versions']
         }
       }
     },
