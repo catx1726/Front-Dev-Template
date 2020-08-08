@@ -26,6 +26,7 @@
     "@nuxtjs/style-resources": "^1.0.0",
     "@nuxtjs/vuetify": "^1.0.0",
     "babel-eslint": "^10.0.1",
+    "cz-conventional-changelog": "^3.2.0",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-nuxt": ">=0.4.2",
@@ -47,5 +48,10 @@
       "npm run eslint:fix",
       "git add ."
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
