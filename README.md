@@ -16,7 +16,6 @@
 1. JavaScript 使用 Eslint
 2. 风格方面 使用 Prettier
 3. CodeReview 使用 lint-stage + husky
-4. GitCommit 使用 [commitizen](https://github.com/commitizen/cz-cli)
 
 ## 代码风格
 
@@ -38,8 +37,6 @@
 ## 待添加
 
 ~~1. **[autoprefixer](https://github.com/postcss/autoprefixer)**~~
-
-~~2. **[auth-module](https://auth.nuxtjs.org/guide/setup.html)**~~
 
 ## Build Setup
 
