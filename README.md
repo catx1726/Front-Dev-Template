@@ -2,6 +2,11 @@
 
 [toc]
 
+## 切换分支选择模板
+
+1. **🏋️‍♀️vue-nuxt-vuetify-template 是前台模板**
+2. **🏋️‍♂️vue-element-template 是后台模板**
+
 ## 框架选择
 
 1. 目前选择 Vue
