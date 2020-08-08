@@ -39,8 +39,6 @@
 
 ~~1. **[autoprefixer](https://github.com/postcss/autoprefixer)**~~
 
-~~2. **[auth-module](https://auth.nuxtjs.org/guide/setup.html)**~~
-
 ## Build Setup
 
 ```bash
