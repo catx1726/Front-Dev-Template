@@ -1,16 +1,43 @@
+/* DOC 如果涉及到分包，请看文档 https://uniapp.dcloud.io/collocation/pages?id=subpackages */
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/about/index",
+      "style": {
+        "navigationBarTitleText": "关于我"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "tacomall",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#845d32",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/icon/tab-bar/home.png",
+        "selectedIconPath": "static/icon/tab-bar/active-home.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/about/index",
+        "iconPath": "static/icon/tab-bar/happy.png",
+        "selectedIconPath": "static/icon/tab-bar/active-happy.png",
+        "text": "关于我"
+      }
+    ]
+  }
 }
