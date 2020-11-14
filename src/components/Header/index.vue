@@ -18,8 +18,8 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .header_container {
-  top: 2.5vh;
+  top: 2vh;
   font-size: 2rem;
-  position: fixed;
+  position: absolute;
 }
 </style>

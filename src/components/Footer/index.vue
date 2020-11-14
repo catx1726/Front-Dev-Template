@@ -16,8 +16,8 @@ export default class MyFooter extends Vue {
 </script>
 <style lang="scss" scoped>
 .footer_container {
-  bottom: 2.5vh;
+  bottom: 0.5vh;
   font-size: 2rem;
-  position: fixed;
+  position: absolute;
 }
 </style>
