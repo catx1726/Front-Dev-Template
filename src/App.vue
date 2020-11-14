@@ -1,17 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <router-view />
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import Store from './store/index'
+// import Layout from '@/views/layout/index.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+import { defineComponent, provide, ref } from 'vue'
+export default defineComponent({
+  components: {},
+  setup() {
+    provide(Store.userStore, ref([]))
   }
-}
+})
 </script>
 
 <style>
@@ -21,6 +22,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+a.router-link-exact-active {
+  color: #42b983;
 }
 </style>

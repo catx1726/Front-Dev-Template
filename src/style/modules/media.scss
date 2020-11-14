@@ -1,0 +1,36 @@
+@media screen and (min-width: 300px) {
+  html {
+    font-size: 8px;
+  }
+  #app {
+    width: 100vw;
+  }
+}
+
+/* 600 - 960 */
+@media screen and (min-width: 600px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+/* 960 - 1264 */
+@media screen and (min-width: 960px) {
+  body {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* 1264 - 1900 */
+@media screen and (min-width: 1264px) {
+  #app {
+    margin: 2vh 0;
+    width: 60vw;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+}
+
+/* 1900 - xxxl */
+@media screen and (min-width: 1900px) {
+}
