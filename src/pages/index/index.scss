@@ -1,7 +1,6 @@
 // index.scss
 .content {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -20,4 +19,16 @@
 .title {
   font-size: 36rpx;
   color: #8f8f94;
+}
+
+.btns_container {
+  bottom: 0;
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+}
+.map_container-index {
+  height: 100vh;
+  width: 100vw;
+  max-height: 80vh;
+  max-width: 100%;
 }

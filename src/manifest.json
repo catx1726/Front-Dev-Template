@@ -57,6 +57,11 @@
     "appid": "",
     "setting": {
       "urlCheck": true
+    },
+    "permission": {
+      "scope.userLocation": {
+        "desc": "打卡需要您的地址信息"
+      }
     }
   },
   "mp-alipay": {
