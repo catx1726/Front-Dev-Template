@@ -6,6 +6,7 @@
     :latitude="mapSettings.latitude"
     :markers="mapSettings.marker"
     :circles="mapSettings.circles"
+    :scale="mapSettings.scale"
   ></map>
 </template>
 
