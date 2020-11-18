@@ -79,8 +79,10 @@ export default Vue.extend({
     cleanSignInfo() {
       sign.clear()
       store.dispatch('user/cleanSignInfo')
+
       this.signBtn.state = false // 按钮开启
       this.signBtn.msg = '打卡'
+
       if (!this.mapSettings.marker[1]) return
       this.mapSettings.marker.splice(1, 1)
       console.log('index method cleanSignInfo:', this.mapSettings.marker)
