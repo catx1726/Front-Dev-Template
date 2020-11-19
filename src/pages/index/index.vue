@@ -18,7 +18,9 @@ import Vue from 'vue'
 import store from '@/store/index'
 import { sign } from '@/utils/sign'
 import { MapRenderMarkerType } from '@/model/map-settings/index'
-import { mapRenderLocationIcon } from '@/utils/map_utils'
+import { mapRenderLocationIcon, mapSpanUser } from '@/utils/map_utils'
+import { userAuthNeedLogin } from '@/utils/permission'
+import cpop from '@/utils/uni_pop'
 import Map from '@/components/Map/index.vue'
 export default Vue.extend({
   mixins: [],
@@ -36,22 +38,23 @@ export default Vue.extend({
       */
       mapSettings: {
         scale: 12,
-        latitude: 39.909, //经度39.909
-        longitude: 116.39742, //纬度116.39742
+        latitude: 30.441786, //经度39.909
+        longitude: 114.401199, //纬度116.39742
         marker: [
           {
             rotate: 0,
             width: 20,
             height: 20,
             id: 'proj-local',
-            latitude: 39.909, // 纬度
-            longitude: 116.39742, // 经度
+            latitude: 30.441786, // 纬度
+            longitude: 114.401199, // 经度
             iconPath: '../../static/icon/map/local.png',
             label: { content: '临时模拟的项目地址', fontSize: '18', textAlign: 'start' }
           }
         ],
-        circles: [{ latitude: 39.909, longitude: 116.39742, radius: '100', fillColor: '#42b98375' }]
+        circles: [{ latitude: 30.441786, longitude: 114.401199, radius: '500', fillColor: '#42b98375' }]
       },
+      mapSpan: 1000, // 允许打卡的范围，1公里 = 1000米
       signBtn: { msg: '打卡', state: false },
       reLocationBtn: { msg: '重新定位', state: false },
       resetBtn: { msg: '清空打卡数据', state: false },
@@ -100,6 +103,8 @@ export default Vue.extend({
       let { lat, lnt, authState } = store.state.user.locationInfo
       this.mapSettings.marker.splice(1, 1)
       this.mapSettings = mapRenderLocationIcon(MapRenderMarkerType.USER, this.mapSettings, { lat, lnt })
+
+      cpop.popToast({ icon: 'success', title: '重定位成功!' })
     },
 
     /*
@@ -115,24 +120,38 @@ export default Vue.extend({
       store.dispatch('user/sign', signInfo)
       sign.set(signInfo)
     },
+
     async userSign() {
       // TODO 对接
+
+      if (!userAuthNeedLogin()) return
 
       // 检测是否有权限
       await this.storeUserAuth()
 
       let { lat, lnt, authState } = store.state.user.locationInfo
+      let { latitude, longitude } = this.mapSettings.marker[0]
+      let span = mapSpanUser({ lat, lnt }, { lat: latitude, lnt: longitude })
       console.log('index method userSign before:', store.state.user.locationInfo)
+      console.log('index method userSign mapSpanUser:', span)
+
+      if (this.mapSpan <= span * 1000) {
+        cpop.popToast({ title: '距离太远，无法打卡', icon: 'none' })
+
+        return
+      }
 
       // 打卡信息保存
       await this.userSignInfoSave()
 
       // 地图绘制
-      this.mapSettings.scale = 6
+      // this.mapSettings.scale = 12
       this.mapSettings = mapRenderLocationIcon(MapRenderMarkerType.USER, this.mapSettings, { lat, lnt })
 
       this.signBtn.state = true
       this.signBtn.msg = '已打卡'
+
+      cpop.popToast({ title: '打卡成功', icon: 'success' })
 
       console.log('index method userSign done:', this.mapSettings.marker)
     },
@@ -176,6 +195,7 @@ export default Vue.extend({
     async storeUserAuth() {
       return await store.dispatch('user/getUserAuth')
     },
+
     /* 权限调起，自动触发，然后再 store 中获取位置并返回 */
     async storeUserAuthLocationInfo() {
       try {

@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapDisableClickLocate, mapGetUserLocation, mapGetUserAuthorizeInfo } from '@/utils/map_utils'
+import { mapGetUserLocation, mapGetUserAuthorizeInfo } from '@/utils/map_utils'
 export default Vue.extend({
   mixins: [],
   props: {
@@ -39,8 +39,6 @@ export default Vue.extend({
     // console.log('map component created hook!')
   },
   mounted() {
-    let tempMap = this.$refs[this.refName]
-    mapDisableClickLocate(tempMap)
     // console.log('map component mounted hook!', this.refName)
   },
   // onReady() {

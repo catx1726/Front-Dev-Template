@@ -1,0 +1,18 @@
+.form_container,
+.bg-template {
+  min-height: 100vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+.form_container .title {
+  min-width: 5rem;
+  max-width: 10rem;
+  text-align: end;
+  padding-right: 1rem;
+}
+
+.minput {
+  margin-bottom: 2rem;
+}

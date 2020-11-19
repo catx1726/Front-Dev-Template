@@ -1,4 +1,5 @@
 import { token } from '../../utils/token'
+import { user } from '../../utils/user'
 import { mapGetUserAuthorizeInfo, mapGetUserAuthorizeInfoClick } from '@/utils/map_utils'
 
 const getDefaultState = () => {
@@ -22,6 +23,9 @@ const mutations = {
   },
   SET_NAME: (state: any, name: any) => {
     state.name = name
+  },
+  SET_ID: (state: any, id: any) => {
+    state.id = id
   },
   SET_AVATAR: (state: any, avatar: any) => {
     state.avatar = avatar
@@ -89,17 +93,19 @@ const actions = {
         })
     })
   },
-  // user login
+
   login({ commit }: any, userInfo: any) {
+    // TODO 临时测试数据
+    console.log('store user login:', userInfo)
     const { username, password } = userInfo
-    commit('SET_TOKEN', 'temp-token')
-    commit('SET_NAME', 'temp-user-name')
+    token.set('template-token')
+    user.set(username)
+    commit('SET_TOKEN', token.get() || 'template-token')
+    commit('SET_NAME', username)
   },
 
-  // get user info
   getInfo({ commit, state }: any) {},
 
-  // user logout
   logout({ commit, state }: any) {
     token.clear()
     commit('CELAN_INFO')

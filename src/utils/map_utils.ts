@@ -1,10 +1,3 @@
-/* 
-  TODO
-  1. 禁止点击定位
-  2. 修改打卡地点，选择项目之后修改中心点
-  3. 点击打卡，根据项目地点的半径( 自己指定 )进行判断
-*/
-
 import { MapSettings, MapRenderMarkerType, markerType, locationInfo } from '@/model/map-settings/index'
 
 /* 绘制Icon*/
@@ -51,16 +44,40 @@ export function mapRenderLocationIcon(type: MapRenderMarkerType, mapSettings: Ma
   return mapSettings
 }
 
-export function mapDisableClickLocate(map: any) {
-  console.log('mapDisableClickLocate:', map)
+/**
+ *
+ * @description
+ *          就两地的距离，计算出来的结果单位为公里；
+ *          Lat1 Lung1 表示A点纬度和经度，Lat2 Lung2 表示B点纬度和经度；
+ *          a=Lat1 – Lat2 为两点纬度之差  b=Lung1 -Lung2 为两点经度之差；
+ *          6378.137为地球半径，单位为公里；
+ * @export
+ * @param {locationInfo} uLoca
+ * @param {locationInfo} pLoca
+ * @returns
+ */
+export function mapSpanUser(uLoca: locationInfo, pLoca: locationInfo) {
+  var radLat1 = (uLoca.lat * Math.PI) / 180.0
+  var radLat2 = (pLoca.lat * Math.PI) / 180.0
+  var a = radLat1 - radLat2
+  var b = (uLoca.lnt * Math.PI) / 180.0 - (pLoca.lnt * Math.PI) / 180.0
+  var s =
+    2 *
+    Math.asin(
+      Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2))
+    )
+  s = s * 6378.137
+  s = Math.round(s * 10000) / 10000
+  return s
 }
 
-export function mapInitCenter(map: any, center: object) {}
-
-export function mapChangeCenter(map: any, center: object) {}
-
-export function mapSpanUser(map: any, uLoca: object, mCenter: object) {}
-
+/**
+ *
+ * @description
+ *          拿到用户的地址，如果没权限，返回指定对象
+ * @export
+ * @returns
+ */
 export function mapGetUserLocation() {
   let backInfo = {}
   console.log('地址拉取中!')
@@ -80,9 +97,12 @@ export function mapGetUserLocation() {
   })
 }
 
-/* 
-  第一次权限获取，自动触发 
-*/
+/**
+ * @description
+ *          第一次权限获取，自动触发
+ * @export
+ * @returns
+ */
 export async function mapGetUserAuthorizeInfo() {
   console.log('授权开始!')
   return new Promise((resolve, reject) => {
@@ -102,11 +122,14 @@ export async function mapGetUserAuthorizeInfo() {
   })
 }
 
-/* 
-  再次获取授权，手动触发
-  当用户第一次拒绝后再次请求授权 
-*/
-// TODO 用户如果已经授权
+/**
+ *
+ * @description
+ *          再次获取授权，手动触发
+ *          当用户第一次拒绝后再次请求授权
+ * @export
+ * @returns
+ */
 export function mapGetUserAuthorizeInfoClick() {
   return new Promise((resolve, reject) => {
     mapGetUserLocation()

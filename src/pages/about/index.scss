@@ -1,0 +1,22 @@
+.bg-template {
+  height: 100%;
+  width: 100%;
+  display: block;
+  filter: blur(3px);
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../../static/background/about/my_personal_files.png');
+}
+
+.about_container {
+  min-height: 100vh;
+  min-width: 100vw;
+  position: relative;
+}
+.about_box {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
