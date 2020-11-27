@@ -104,7 +104,10 @@ const actions = {
     commit('SET_NAME', username)
   },
 
-  getInfo({ commit, state }: any) {},
+  getInfo({ commit, state }: any) {
+    commit('SET_TOKEN', token.get() || 'template-token')
+    commit('SET_NAME', user.get())
+  },
 
   logout({ commit, state }: any) {
     token.clear()

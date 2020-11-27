@@ -1,4 +1,23 @@
 // index.scss
+
+$unselected-btn-color: #999999;
+$selected-btn-color: #000000;
+
+// reset button
+button {
+  margin: 5px;
+  padding: 0;
+  height: 26px;
+  max-width: 30vw;
+  line-height: 26px;
+
+  border: transparent;
+  background-color: transparent;
+}
+button::after {
+  border: transparent;
+}
+
 .content {
   display: flex;
   align-items: center;
@@ -23,12 +42,76 @@
 
 .btns_container {
   bottom: 0;
-  margin-bottom: 5vh;
-  margin-top: 5vh;
+  // map 占用了 80vh
+  height: 20vh;
+  position: relative;
+  .btn-sign {
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    line-height: 15vh;
+    color: #ffffff;
+    background-color: $selected-btn-color;
+  }
+  .btn-sign-relocation {
+    top: 0;
+    right: 0;
+    position: absolute;
+  }
 }
 .map_container-index {
   height: 100vh;
   width: 100vw;
   max-height: 80vh;
   max-width: 100%;
+}
+
+.btns_container-switch {
+  // 与 picker_container 对半
+  width: 50vw;
+  z-index: 100;
+  position: absolute;
+  .btn-switch,
+  .btn-switch-line {
+    color: $unselected-btn-color;
+  }
+  .btn-switch-line {
+    margin: 5px;
+    padding: 0;
+    height: 26px;
+    max-width: 30vw;
+    line-height: 26px;
+    color: black;
+  }
+  .btn-switch::after {
+    border: transparent;
+  }
+}
+
+.picker_container {
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 26px;
+  margin: 5px;
+  z-index: 100;
+  line-height: 26px;
+  position: absolute;
+  .picker-title {
+    max-width: 25vw;
+  }
+  .picker-input {
+    max-width: 25vw;
+    @include word-dot;
+  }
+  .picker_box {
+    height: 26px;
+    line-height: 26px;
+    .icon {
+      top: -5px;
+      right: -5px;
+      transform: rotate(180deg);
+      position: relative;
+    }
+  }
 }

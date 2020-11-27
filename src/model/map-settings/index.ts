@@ -1,4 +1,4 @@
-export type markerType = {
+export type MarkerType = {
   rotate: number
   width: number
   height: number
@@ -33,7 +33,7 @@ export interface MapSettings {
   longitude: number
 }
 
-export interface locationInfo {
+export interface LocationInfo {
   lat: number
   lnt: number
 }
@@ -41,4 +41,9 @@ export interface locationInfo {
 export enum MapRenderMarkerType {
   USER = 0,
   PROJECT = 1
+}
+
+export enum MapBtnSwitchType {
+  NORMAL = 0,
+  TRAVAL = 1
 }

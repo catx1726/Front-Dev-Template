@@ -21,6 +21,7 @@ export function popToast(info: popToastInfoTypes = { title: '提示', icon: 'non
   })
 }
 export function popLoading(info: popLoadingInfoTypes = { title: '加载中', mask: true }) {}
+
 export function popModal(
   info: popModalInfoTypes = {
     title: '弹窗',

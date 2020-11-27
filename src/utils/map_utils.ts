@@ -1,4 +1,4 @@
-import { MapSettings, MapRenderMarkerType, markerType, locationInfo } from '@/model/map-settings/index'
+import { MapSettings, MapRenderMarkerType, MarkerType, LocationInfo } from '@/model/map-settings/index'
 
 /* 绘制Icon*/
 /**
@@ -8,11 +8,11 @@ import { MapSettings, MapRenderMarkerType, markerType, locationInfo } from '@/mo
  * @description 绘制Icon
  * @param {MapRenderMarkerType} type
  * @param {MapSettings} mapSettings
- * @param {locationInfo} localInfo
+ * @param {LocationInfo} localInfo
  * @returns
  */
-export function mapRenderLocationIcon(type: MapRenderMarkerType, mapSettings: MapSettings, localInfo: locationInfo) {
-  let markerTemplate: markerType = {
+export function mapRenderLocationIcon(type: MapRenderMarkerType, mapSettings: MapSettings, localInfo: LocationInfo) {
+  let markerTemplate: MarkerType = {
     rotate: 0,
     width: 20,
     height: 20,
@@ -52,11 +52,11 @@ export function mapRenderLocationIcon(type: MapRenderMarkerType, mapSettings: Ma
  *          a=Lat1 – Lat2 为两点纬度之差  b=Lung1 -Lung2 为两点经度之差；
  *          6378.137为地球半径，单位为公里；
  * @export
- * @param {locationInfo} uLoca
- * @param {locationInfo} pLoca
+ * @param {LocationInfo} uLoca
+ * @param {LocationInfo} pLoca
  * @returns
  */
-export function mapSpanUser(uLoca: locationInfo, pLoca: locationInfo) {
+export function mapSpanUser(uLoca: LocationInfo, pLoca: LocationInfo) {
   var radLat1 = (uLoca.lat * Math.PI) / 180.0
   var radLat2 = (pLoca.lat * Math.PI) / 180.0
   var a = radLat1 - radLat2
