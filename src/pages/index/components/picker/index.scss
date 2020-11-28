@@ -1,0 +1,29 @@
+// reset button
+
+.picker_container {
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 26px;
+  margin: 5px;
+  z-index: 100;
+  line-height: 26px;
+  position: absolute;
+}
+.picker-title {
+  max-width: 25vw;
+}
+.picker-input {
+  max-width: 25vw;
+  @include word-dot;
+}
+.picker_box {
+  height: 26px;
+  line-height: 26px;
+  .icon {
+    top: -5px;
+    right: -5px;
+    transform: rotate(180deg);
+    position: relative;
+  }
+}

@@ -2,39 +2,21 @@
   <scroll-view class="content">
     <view>
       <!-- sign-type-start -->
-      <view class="btns_container-switch m-flex">
-        <button
-          class="btn-switch"
-          @click="userSwitchBtn(switchBtn.btnType.NORMAL)"
-          :style="{
-            color: switchBtn.curBtn === switchBtn.btnType.NORMAL ? switchBtnStyle.selected : switchBtnStyle.unselected
-          }"
-        >
-          打卡
-        </button>
-
-        <span class="btn-switch-line">|</span>
-
-        <button
-          class="btn-switch"
-          @click="userSwitchBtn(switchBtn.btnType.TRAVAL)"
-          :style="{
-            color: switchBtn.curBtn === switchBtn.btnType.TRAVAL ? switchBtnStyle.selected : switchBtnStyle.unselected
-          }"
-        >
-          出差
-        </button>
-      </view>
+      <IndexSignSwitchButtonComponent
+        :switch-btn="switchBtn"
+        :switch-btn-style="switchBtnStyle"
+        @user-switch-btn="userSwitchBtn"
+      ></IndexSignSwitchButtonComponent>
       <!-- sign-type-end -->
 
       <!-- proj-select-start -->
-      <view class=" picker_container m-flex " v-if="switchBtn.curBtn === switchBtn.btnType.NORMAL">
-        <text class="picker-title">当前项目：</text>
-        <picker class="picker_box" @change="userPickerProjChange" :value="index" :range="projList" range-key="name">
-          <view class="picker-input">{{ curProj.name }}</view>
-          <text class="iconfont icon-downarrow icon"></text>
-        </picker>
-      </view>
+      <IndexProjPickerComponent
+        v-if="switchBtn.curBtn === switchBtn.btnType.NORMAL"
+        :switch-btn="switchBtn"
+        :cur-proj="curProj"
+        :proj-list="projList"
+        @user-picker-proj-change="userPickerProjChange"
+      ></IndexProjPickerComponent>
       <!-- proj-select-end -->
 
       <!-- map-component-start -->
@@ -43,14 +25,17 @@
     </view>
 
     <!-- sign-submit-container-start -->
-    <view class="btns_container m-flex flex-jc-center flex-an-center">
-      <button :disabled="signBtn.state" class="btn-sign" @click="userSign">{{ signBtn.msg }}</button>
-      <!-- <button class="btn-sign-clean" @click="cleanSignInfo">{{ resetBtn.msg }}</button> -->
-      <button class="btn-sign-relocation" open-type="storeUserAuthLocationInfo" @click="userRelocation">
-        <text class="iconfont icon-reload"></text>
-        <!-- {{ reLocationBtn.msg }} -->
-      </button>
-    </view>
+    <IndexSignButtonComponent
+      :sign-btn="signBtn"
+      :map-settings.sync="mapSettings"
+      :map-span="mapSpan"
+      :switch-btn="switchBtn"
+      @user-sign="userSign"
+      @user-relocation="userRelocation"
+      @store-user-sign-info="storeUserSignInfo"
+    ></IndexSignButtonComponent>
+    <!-- {{ reLocationBtn.msg }} -->
+    <!-- <button class="btn-sign-clean" @click="cleanSignInfo">{{ resetBtn.msg }}</button> -->
     <!-- sign-submit-container-end -->
   </scroll-view>
 </template>
@@ -59,15 +44,20 @@
 import Vue from 'vue'
 import store from '@/store/index'
 import { sign } from '@/utils/sign'
-import { MapRenderMarkerType, MapBtnSwitchType } from '@/model/map-settings/index'
-import { mapRenderLocationIcon, mapSpanUser } from '@/utils/map_utils'
-import { userAuthNeedLogin } from '@/utils/permission'
-import cpop from '@/utils/uni_pop'
+import { MapBtnSwitchType } from '@/model/map-settings/index'
+
+import IndexSignButtonComponent from './components/sign-button/index.vue'
+import IndexProjPickerComponent from './components/picker/index.vue'
+import IndexSignSwitchButtonComponent from './components/sign-type-switch-button/index.vue'
 import Map from '@/components/Map/index.vue'
+
 export default Vue.extend({
   mixins: [],
   components: {
-    Map
+    Map,
+    IndexSignButtonComponent,
+    IndexProjPickerComponent,
+    IndexSignSwitchButtonComponent
   },
   data() {
     return {
@@ -102,8 +92,11 @@ export default Vue.extend({
       resetBtn: { msg: '清空打卡数据', state: false },
       switchBtnStyle: { unselected: '#999999', selected: '#000000' },
       switchBtn: { curBtn: MapBtnSwitchType.NORMAL, btnType: MapBtnSwitchType },
-      projList: [{ name: 'ProjOne' }, { name: 'ProjTwo' }],
-      curProj: { name: 'ProjOne' },
+      projList: [
+        { name: 'ProjOne', latitude: 30.441786, longitude: 114.401199 },
+        { name: 'ProjTwo', latitude: 32.441786, longitude: 115.401199 }
+      ],
+      curProj: { name: 'ProjOne', latitude: 30.441786, longitude: 114.401199 },
       title: 'Hello'
     }
   },
@@ -136,83 +129,47 @@ export default Vue.extend({
       this.mapSettings.marker.splice(1, 1)
       console.log('index method cleanSignInfo:', this.mapSettings.marker)
     },
-    userPickerProjChange(val: any) {
-      let curIndex = val.detail.value
-      this.curProj = this.projList[curIndex]
-      console.log('index method userPickerProjChange:', this.projList[curIndex].name)
-    },
-    userSwitchBtn(val: MapBtnSwitchType) {
-      if (this.switchBtn.curBtn === val) return
-      if (val === MapBtnSwitchType.TRAVAL) {
-        // TODO 隐藏 marker
-      }
-      this.switchBtn.curBtn = val
-      console.log('index method userSwitchBtn!', val, this.switchBtn.curBtn === this.switchBtn.btnType.NORMAL)
-    },
 
-    /* 用户点击更新定位 */
-    async userRelocation() {
-      // 已经打卡
-      if (!(await this.storeUserSignInfo())) return
-
-      // 权限检测
-      await this.storeUserAuth()
-
-      console.log('index method userRelocation!')
-      let { lat, lnt, authState } = store.state.user.locationInfo
-      this.mapSettings.marker.splice(1, 1)
-      this.mapSettings = mapRenderLocationIcon(MapRenderMarkerType.USER, this.mapSettings, { lat, lnt })
-
-      cpop.popToast({ icon: 'success', title: '重定位成功!' })
-    },
-
-    /*
-      用户点击打卡
-      *.
-        获取权限 ——> 获得地址，在下面逻辑中没有执行获取权限，
-        是因为在 onShow 阶段已经拉取过，这里需要一个失败后重新拉取的按钮
-      1. 保存到 vuex
-      2. 保存到本地
-    */
-    async userSignInfoSave() {
-      let signInfo = { time: this.dayjs().format('YYYY-MM-DD'), signed: true }
-      store.dispatch('user/sign', signInfo)
-      sign.set(signInfo)
-    },
-
-    async userSign() {
-      // TODO 对接
-
-      if (!userAuthNeedLogin()) return
-
-      // 检测是否有权限
-      await this.storeUserAuth()
-
-      let { lat, lnt, authState } = store.state.user.locationInfo
-      let { latitude, longitude } = this.mapSettings.marker[0]
-      let span = mapSpanUser({ lat, lnt }, { lat: latitude, lnt: longitude })
-      console.log('index method userSign before:', store.state.user.locationInfo)
-      console.log('index method userSign mapSpanUser:', span)
-
-      if (this.mapSpan <= span * 1000) {
-        cpop.popToast({ title: '距离太远，无法打卡', icon: 'none' })
-
+    /* 根据打卡类型，处理 marker 和 circle 和 mapCenter */
+    handleMarkerInfo(type: MapBtnSwitchType) {
+      /* TODO 如果用户没有项目，那么定位到公司地址，在获取 ProjList 的时候判断 */
+      if (type === MapBtnSwitchType.TRAVAL) {
+        this.mapSettings.marker[0].width = 0
+        this.mapSettings.marker[0].height = 0
+        this.mapSettings.marker[0].label.content = ''
+        this.mapSettings.circles[0].radius = '0'
         return
       }
 
-      // 打卡信息保存
-      await this.userSignInfoSave()
+      this.mapSettings.latitude = this.curProj.latitude
+      this.mapSettings.longitude = this.curProj.longitude
 
-      // 地图绘制
-      // this.mapSettings.scale = 12
-      this.mapSettings = mapRenderLocationIcon(MapRenderMarkerType.USER, this.mapSettings, { lat, lnt })
+      this.mapSettings.marker[0].width = 20
+      this.mapSettings.marker[0].height = 20
+      this.mapSettings.marker[0].latitude = this.curProj.latitude
+      this.mapSettings.marker[0].longitude = this.curProj.longitude
+      this.mapSettings.marker[0].label.content = this.curProj.name
 
-      this.signBtn.state = true
-      this.signBtn.msg = '已打卡'
+      this.mapSettings.circles[0].radius = '500'
+      this.mapSettings.circles[0].latitude = this.curProj.latitude
+      this.mapSettings.circles[0].longitude = this.curProj.longitude
+    },
 
-      cpop.popToast({ title: '打卡成功，祝愉快!', icon: 'success' })
+    /* 为什么没有移动到组件里，是因为这里修改了数据(子组件修改父组件的数据)，不大合适 */
+    userPickerProjChange(val: any) {
+      let curIndex = val.detail.value
+      this.curProj = this.projList[curIndex]
+      this.handleMarkerInfo(MapBtnSwitchType.NORMAL)
+      console.log('index method userPickerProjChange!')
+    },
+    /* 为什么没有移动到组件里，是因为这里修改了数据(子组件修改父组件的数据)，不大合适 */
+    userSwitchBtn(val: MapBtnSwitchType) {
+      if (this.switchBtn.curBtn === val) return
 
-      console.log('index method userSign done:', this.mapSettings.marker)
+      // TODO 处理 marker
+      this.handleMarkerInfo(val)
+      this.switchBtn.curBtn = val
+      console.log('index method userSwitchBtn!', val, this.switchBtn.curBtn === this.switchBtn.btnType.NORMAL)
     },
 
     /*
@@ -248,11 +205,6 @@ export default Vue.extend({
       this.cleanSignInfo()
       this.storeUserAuthLocationInfo()
       return true
-    },
-
-    /* 权限调起，手动触发 */
-    async storeUserAuth() {
-      return await store.dispatch('user/getUserAuth')
     },
 
     /* 权限调起，自动触发，然后再 store 中获取位置并返回 */

@@ -1,0 +1,39 @@
+$unselected-btn-color: #999999;
+$selected-btn-color: #000000;
+
+// reset button
+.mbtn {
+  margin: 5px;
+  padding: 0;
+  height: 26px;
+  max-width: 30vw;
+  line-height: 26px;
+
+  border: transparent;
+  background-color: transparent;
+}
+.mbtn::after {
+  border: transparent;
+}
+
+.btns_container-switch {
+  // 与 picker_container 对半
+  width: 50vw;
+  z-index: 100;
+  position: absolute;
+}
+.btn-switch,
+.btn-switch-line {
+  color: $unselected-btn-color;
+}
+.btn-switch-line {
+  margin: 5px;
+  padding: 0;
+  height: 26px;
+  max-width: 30vw;
+  line-height: 26px;
+  color: black;
+}
+.btn-switch::after {
+  border: transparent;
+}
