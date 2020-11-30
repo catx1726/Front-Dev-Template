@@ -3,10 +3,12 @@
     <button :disabled="signBtn.state" class="mbtn btn-sign" @click="userSign(switchBtn.curBtn)">
       {{ signBtn.msg }}
     </button>
-    <!-- <button class="btn-sign-clean" @click="cleanSignInfo">{{ resetBtn.msg }}</button> -->
     <button class="mbtn btn-sign-relocation" open-type="storeUserAuthLocationInfo" @click="userRelocation">
       <text class="iconfont icon-reload"></text>
       <!-- {{ reLocationBtn.msg }} -->
+    </button>
+    <button class="mbtn btn-sign-clean" @click="$emit('cleanSignInfo')">
+      <text class="iconfont icon-clean"></text>
     </button>
   </view>
 </template>
@@ -31,14 +33,15 @@ export default Vue.extend({
       type: Object,
       default: {}
     },
-    storeUserSignInfo: { type: Function },
     mapSettings: {
       type: Object,
       default: {}
     },
     mapSpan: {
       type: Number
-    }
+    },
+    storeUserSignInfo: { type: Function },
+    cleanSignInfo: { type: Function, default: () => {} }
   },
   data() {
     return {}
@@ -70,12 +73,10 @@ export default Vue.extend({
     async userRelocation() {
       // FIXME 已经打卡，就不让重新定位
       // TODO 已经打卡，后续完善(如 界面显示)
-      // let sgined: boolean = true
-      // this.$emit('storeUserSignInfo', null, (val: any) => {
-      //   console.log('res:', val)
-      // })
-      // console.log('index component userRelocation:', sgined)
-      // if (!sgined) return
+      if (this.signBtn.state) {
+        cpop.popToast({ title: '您已打卡!', icon: 'none' })
+        return
+      }
 
       // 权限检测
       await this.storeUserAuth()
@@ -122,12 +123,14 @@ export default Vue.extend({
       // this.mapSettings.scale = 12
       this.$emit('update:mapSettings', mapRenderLocationIcon(MapRenderMarkerType.USER, this.mapSettings, { lat, lnt }))
 
-      this.signBtn.state = true
-      this.signBtn.msg = '已打卡'
+      // FIXME 拆分成组件之后，数据无法响应
+      // this.signBtn.msg = '已打卡'
+      // this.signBtn.state = true
+      this.$emit('update:signBtn', { state: true, msg: '已打卡' })
 
-      cpop.popToast({ title: '打卡成功，祝愉快!', icon: 'success' })
+      cpop.popToast({ title: '成功,祝愉快!', icon: 'success' })
 
-      // console.log('index method userSign done:', this.mapSettings.marker)
+      console.log('index method userSign done:', this.mapSettings.marker, this.signBtn)
     }
   }
 })

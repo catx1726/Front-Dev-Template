@@ -13,7 +13,7 @@
       <IndexProjPickerComponent
         v-if="switchBtn.curBtn === switchBtn.btnType.NORMAL"
         :switch-btn="switchBtn"
-        :cur-proj="curProj"
+        :cur-proj="mapCenterMarker"
         :proj-list="projList"
         @user-picker-proj-change="userPickerProjChange"
       ></IndexProjPickerComponent>
@@ -26,16 +26,15 @@
 
     <!-- sign-submit-container-start -->
     <IndexSignButtonComponent
-      :sign-btn="signBtn"
+      :sign-btn.sync="signBtn"
       :map-settings.sync="mapSettings"
       :map-span="mapSpan"
       :switch-btn="switchBtn"
       @user-sign="userSign"
       @user-relocation="userRelocation"
       @store-user-sign-info="storeUserSignInfo"
+      @clean-sign-info="cleanSignInfo"
     ></IndexSignButtonComponent>
-    <!-- {{ reLocationBtn.msg }} -->
-    <!-- <button class="btn-sign-clean" @click="cleanSignInfo">{{ resetBtn.msg }}</button> -->
     <!-- sign-submit-container-end -->
   </scroll-view>
 </template>
@@ -70,8 +69,8 @@ export default Vue.extend({
       */
       mapSettings: {
         scale: 12,
-        latitude: 30.441786, //经度39.909
-        longitude: 114.401199, //纬度116.39742
+        latitude: 30.441786,
+        longitude: 114.401199,
         marker: [
           {
             rotate: 0,
@@ -81,11 +80,21 @@ export default Vue.extend({
             latitude: 30.441786, // 纬度
             longitude: 114.401199, // 经度
             iconPath: '../../static/icon/map/company.png',
-            label: { content: '临时模拟的项目地址', fontSize: '18', textAlign: 'start' }
+            label: { content: 'ProjOne', fontSize: '18', textAlign: 'start' }
           }
         ],
         circles: [{ latitude: 30.441786, longitude: 114.401199, radius: '500', fillColor: '#42b98375' }]
       },
+      mapCenterMarker: {
+        rotate: 0,
+        width: 20,
+        height: 20,
+        id: 'proj-local',
+        latitude: 30.441786,
+        longitude: 114.401199,
+        iconPath: '../../static/icon/map/company.png',
+        label: { content: 'ProjOne', fontSize: '18', textAlign: 'start' }
+      }, // 存储当前打卡的项目地址
       mapSpan: 1000, // 允许打卡的范围，1公里 = 1000米
       signBtn: { msg: '打卡', state: false },
       reLocationBtn: { msg: '重新定位', state: false },
@@ -96,7 +105,6 @@ export default Vue.extend({
         { name: 'ProjOne', latitude: 30.441786, longitude: 114.401199 },
         { name: 'ProjTwo', latitude: 32.441786, longitude: 115.401199 }
       ],
-      curProj: { name: 'ProjOne', latitude: 30.441786, longitude: 114.401199 },
       title: 'Hello'
     }
   },
@@ -134,33 +142,33 @@ export default Vue.extend({
     handleMarkerInfo(type: MapBtnSwitchType) {
       /* TODO 如果用户没有项目，那么定位到公司地址，在获取 ProjList 的时候判断 */
       if (type === MapBtnSwitchType.TRAVAL) {
-        this.mapSettings.marker[0].width = 0
-        this.mapSettings.marker[0].height = 0
-        this.mapSettings.marker[0].label.content = ''
+        this.mapSettings.marker.splice(0, 1)
         this.mapSettings.circles[0].radius = '0'
         return
       }
 
-      this.mapSettings.latitude = this.curProj.latitude
-      this.mapSettings.longitude = this.curProj.longitude
+      // 地图视中心
+      this.mapSettings.latitude = this.mapCenterMarker.latitude
+      this.mapSettings.longitude = this.mapCenterMarker.longitude
 
-      this.mapSettings.marker[0].width = 20
-      this.mapSettings.marker[0].height = 20
-      this.mapSettings.marker[0].latitude = this.curProj.latitude
-      this.mapSettings.marker[0].longitude = this.curProj.longitude
-      this.mapSettings.marker[0].label.content = this.curProj.name
+      // map marker
+      this.mapSettings.marker[0] = this.mapCenterMarker
 
+      // map circle
       this.mapSettings.circles[0].radius = '500'
-      this.mapSettings.circles[0].latitude = this.curProj.latitude
-      this.mapSettings.circles[0].longitude = this.curProj.longitude
+      this.mapSettings.circles[0].latitude = this.mapCenterMarker.latitude
+      this.mapSettings.circles[0].longitude = this.mapCenterMarker.longitude
     },
 
     /* 为什么没有移动到组件里，是因为这里修改了数据(子组件修改父组件的数据)，不大合适 */
     userPickerProjChange(val: any) {
       let curIndex = val.detail.value
-      this.curProj = this.projList[curIndex]
+      let { name, latitude, longitude } = this.projList[curIndex]
+      this.mapCenterMarker.label.content = name
+      this.mapCenterMarker.latitude = latitude
+      this.mapCenterMarker.longitude = longitude
       this.handleMarkerInfo(MapBtnSwitchType.NORMAL)
-      console.log('index method userPickerProjChange!')
+      console.log('index method userPickerProjChange!', name, latitude, longitude)
     },
     /* 为什么没有移动到组件里，是因为这里修改了数据(子组件修改父组件的数据)，不大合适 */
     userSwitchBtn(val: MapBtnSwitchType) {

@@ -9,7 +9,7 @@
       :range="projList"
       range-key="name"
     >
-      <view class="picker-input">{{ curProj.name }}</view>
+      <view class="picker-input">{{ curProj.label.content }}</view>
       <text class="iconfont icon-downarrow icon"></text>
     </picker>
   </view>

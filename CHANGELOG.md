@@ -40,15 +40,31 @@ scopes: [
 # Unreleased
 
 1. ~~打卡规则，根据用户与项目的距离进行判断~~
-2. 打卡地点切换
+2. 打卡地点切换，进行中
 3. 登录
    1. ~~本地登录~~
    2. 有后端的登录
-   3. 登录逻辑修复，校验有无登录以 Name 为主也就是Id，公司用的 Id，且没有 userInfo 的接口，无法根据 token 拿到 userInfo 也没必要。
-4. 界面
+   3. ~~登录逻辑修复，校验有无登录以 Name 为主也就是 Id，公司用的 Id，且没有 userInfo 的接口，无法根据 token 拿到 userInfo 也没必要。~~
+4. 界面，进行中
 5. 测试
 
 # Release
+
+## V0.000004 - 2020-11-27 / 28
+
+### FEAT
+
+> 完善，代码拆分，将 index.vue 中按照模块拆分成组件，减少文件压力
+
+### PREF
+
+> 完善，界面修改 index.vue 已基本完成，实现原型图上的样式
+
+### FIX
+
+> 修复，登录之后还需要登录，是因为没有 getUserInfo 的接口，所以无法 token 更新信息，所以需要重新登录，这里将 userInfo 也保存到 localStorage (在 store.getUserInfo 方法中)
+
+### FEAT
 
 ## V0.000003 - 2020-11-19
 
