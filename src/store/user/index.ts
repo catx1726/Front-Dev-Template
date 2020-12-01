@@ -111,7 +111,8 @@ const actions = {
 
   logout({ commit, state }: any) {
     token.clear()
-    commit('CELAN_INFO')
+    user.clear()
+    commit('CLEAN_INFO')
   }
 }
 

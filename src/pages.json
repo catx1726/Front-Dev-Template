@@ -12,12 +12,6 @@
       "style": {
         "navigationBarTitleText": "关于我"
       }
-    },
-    {
-      "path": "pages/login/index",
-      "style": {
-        "navigationBarTitleText": "登录"
-      }
     }
   ],
   "globalStyle": {

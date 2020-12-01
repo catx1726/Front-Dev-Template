@@ -1,3 +1,6 @@
+$logout-btn-bg-color: #999999;
+$selected-btn-color: #000000;
+
 .bg-template {
   height: 100%;
   width: 100%;
@@ -21,23 +24,24 @@
   position: relative;
 }
 
+$icon-height-width: 25vh;
 .userinfo_container {
   width: 100vw;
-  min-height: 30vh;
+  min-height: $icon-height-width;
   position: relative;
-  margin-bottom: 5vh;
+  margin-bottom: 2.5vh;
 }
 .usericon_box,
 .username_box {
-  width: 45vw;
+  width: $icon-height-width;
   margin: 2.5vw;
   position: relative;
   display: inline-flex;
 }
 .usericon_box {
-  height: 45vw;
+  height: $icon-height-width;
   image {
-    height: 45vw;
+    height: $icon-height-width;
     border-radius: 50%;
     object-fit: cover;
     background-color: aliceblue;
@@ -49,7 +53,36 @@
 }
 
 .sign-list_container {
-  width: 100vw;
+  width: 90vw;
   min-height: 50vh;
-  padding: 0 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 2.5vh;
+  .list_box {
+    padding: 5px 10px;
+  }
+  .list_item {
+    .info {
+      @include word-dot;
+      display: block;
+    }
+    margin-bottom: 10px;
+  }
+}
+
+.logout_container {
+  width: 100vw;
+  min-height: 10vh;
+
+  .logout-btn {
+    width: 90vw;
+    color: white;
+    letter-spacing: 50px;
+    // 校准
+    padding-left: 50px;
+    // reset
+    padding-right: 0px;
+    text-align: center;
+    background-color: $selected-btn-color;
+  }
 }

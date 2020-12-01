@@ -12,16 +12,17 @@
         </view>
       </view>
       <view class="formbtn_container">
-        <button form-type="submit">登录</button>
+        <button form-type="submit" class="submit-btn">登录</button>
       </view>
     </form>
   </view>
 </template>
 
 <script>
-import { popToast } from '@/utils/uni_pop'
+import Vue from 'vue'
 import store from '@/store/index'
-export default {
+import { popToast } from '@/utils/uni_pop'
+export default Vue.extend({
   name: '',
   components: {},
   props: [],
@@ -62,7 +63,7 @@ export default {
       // console.log('component LoginForm methods formSubmit:', e)
     }
   }
-}
+})
 </script>
 <style lang="scss" scoped>
 @import './index.scss';

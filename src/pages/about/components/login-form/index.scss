@@ -1,3 +1,6 @@
+$logout-btn-bg-color: #999999;
+$selected-btn-color: #000000;
+
 .form_container,
 .bg-template {
   min-height: 100vh;
@@ -15,4 +18,15 @@
 
 .minput {
   margin-bottom: 2rem;
+}
+.submit-btn {
+  width: 90vw;
+  color: white;
+  letter-spacing: 50px;
+  // 校准
+  padding-left: 50px;
+  // reset
+  padding-right: 0px;
+  text-align: center;
+  background-color: $selected-btn-color;
 }
