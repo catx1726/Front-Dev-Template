@@ -1,0 +1,17 @@
+{
+  "Side-Menu": {
+    "Scratch-Card": "刮刮乐",
+    "Inbox": "收件箱",
+    "Spam": "垃圾邮件",
+    "Title": "侧边栏"
+  },
+  "Scratch-Card": {
+    "Title": "2021牛年大吉"
+  },
+  "Inbox": {
+    "Title": "收件箱"
+  },
+  "Spam": {
+    "Title": "垃圾邮件"
+  }
+}

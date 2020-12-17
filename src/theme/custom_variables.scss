@@ -1,0 +1,15 @@
+$base-margin: 1rem;
+
+.intent-alert{
+  div.alert-wrapper > .alert-message{
+    padding-bottom: $base-margin;
+    white-space: pre-wrap;
+  }
+  div > div.alert-checkbox-group{
+    border: none;
+
+    button > span.button-inner > div.alert-checkbox-label{
+      color: #666;
+    }
+  }
+}

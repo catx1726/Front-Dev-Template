@@ -1,0 +1,15 @@
+/* 去除 toolbar 的 shadow */
+.header {
+  &-md::after {
+    --box-shaow: none;
+    background-image: none;
+  }
+}
+/* 居中 title 文字 */
+ion-title {
+  text-align: center;
+}
+/* 当 ion-back-button 存在时，减去 btn 宽度使其居中,因为 ios 默认是居中,所以要排除 */
+ion-buttons + ion-title:not(.ios) {
+  margin-left: -50px; // back button 大小
+}

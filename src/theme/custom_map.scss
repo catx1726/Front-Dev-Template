@@ -1,0 +1,41 @@
+$card-text-color: #9dadc0;
+
+.info_box {
+  min-height: 50px;
+  & div {
+    border-radius: 3px;
+    padding: 0px 10px;
+    font-size: 14px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+  }
+  & a {
+    margin: 0 20px;
+    text-decoration: none;
+  }
+  // & div:nth-of-type(even) {
+  //   border: 1px solid #37d592;
+  // }
+  // & div:nth-of-type(odd) {
+  //   border: 1px solid #3dc2ff;
+  // }
+  .item_ {
+    &title {
+      color: $card-text-color;
+    }
+    &content,
+    &title {
+      line-height: 30px;
+      max-width: 150px;
+      @include word-dot;
+      vertical-align: middle;
+    }
+  }
+  .url_scheme {
+    color: var(--ion-color-primary);
+    cursor: pointer;
+  }
+  .url_scheme:hover {
+    text-decoration: var(--ion-color-primary);
+  }
+}

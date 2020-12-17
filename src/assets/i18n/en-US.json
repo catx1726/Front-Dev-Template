@@ -1,0 +1,17 @@
+{
+  "Side-Menu": {
+    "Scratch-Card": "Scratch-Card",
+    "Inbox": "Inbox",
+    "Spam": "Spam",
+    "Title": "SideMenu"
+  },
+  "Scratch-Card": {
+    "Title": "2021 Good luck in the year of the ox"
+  },
+  "Inbox": {
+    "Title": "Inbox"
+  },
+  "Spam": {
+    "Title": "Spam"
+  }
+}
