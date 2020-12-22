@@ -1,0 +1,13 @@
+@import './mixins.scss';
+.mloader {
+  --hw: 150px;
+  .loading-wrapper {
+    height: var(--hw);
+    width: var(--hw);
+    line-height: var(--hw);
+    border-radius: 50%;
+    @include bg-img-contain;
+    background-size: cover;
+    background-image: url('../assets/loading/20201221123436.gif');
+  }
+}
