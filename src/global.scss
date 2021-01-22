@@ -26,9 +26,18 @@
 @import '~@ionic/angular/css/flex-utils.css';
 
 /* Custom CSS */
-@import './theme/box_shadow.scss';
-@import './theme/flex_layout.scss';
-@import './theme/custom_variables.scss';
-@import './theme/text.scss';
-@import './theme/custom_map.scss';
-@import './theme/reset.scss';
+@import './theme/components/box_shadow.scss';
+@import './theme/components/custom_variables.scss';
+@import './theme/components/custom_map.scss';
+@import './theme/components/custom_loader.scss';
+@import './theme/components/custom_animate.scss';
+@import './theme/components/custom_font.scss';
+@import './theme/components/custom_scrollbar.scss';
+@import './theme/components/custom_scratch_card.scss';
+
+@import './theme/utils/flex_layout.scss';
+@import './theme/utils/text.scss';
+@import './theme/utils/pos_absolute.scss';
+
+@import './theme/normalize/reset.scss';
+@import 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/css/all.min.css';

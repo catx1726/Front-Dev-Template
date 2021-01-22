@@ -1,0 +1,197 @@
+@import '../../../theme/utils/mixins.scss';
+.card_container {
+  --base-hw: 300px;
+  --default-zindex: 10;
+  --border-radius: 10px;
+  --mask-color: #f65736;
+  --choose-box-shadow-color: 0px 0px 30px 5px rgba(63, 61, 86, 0.3);
+  // width 指定为 90vw 是为了在手机屏显示的时候，不铺满，有空隙
+  // 配合 max-width 是为了在 PC 上显示时控制最大像素
+  // min-width 就是为了体验，不能再小了...
+  margin: 0 6vw;
+  height: 90vh;
+  width: 90vw;
+  min-width: var(--base-hw);
+  min-height: var(--base-hw);
+  max-width: 10vh;
+  max-height: 10vh;
+  transform-origin: center;
+  position: relative;
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+
+  * {
+    transition: all 0.3s ease;
+  }
+}
+
+.card_container,
+.click_mask {
+  // border-radius: var(--border-radius);
+}
+.click_mask {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  filter: brightness(0.9);
+  background-color: var(--mask-color);
+  z-index: calc(var(--default-zindex) * 3);
+  @include bg-img-contain;
+  // background-size: contain;
+  // background-color: #fff;
+  // background-image: url('../../../assets/imgs/scratch-cover/undraw_snow_globe_923j.svg');
+  &::after {
+    content: '';
+    // width: 100%;
+    height: 100%;
+    width: 100%;
+    transform: scaleY(0);
+    transform-origin: top center;
+    display: block;
+    position: absolute;
+    // 这里的时间要配合 > setTimeout 的延时，让用户感觉还未激活选中
+    transition: all 1.2s ease;
+    @include bg-img-contain;
+    background-color: var(--mask-color);
+    background-image: url('../../../assets/imgs/index-imgs/fu.svg');
+  }
+  &.press {
+    // background-color: #fff;
+    // border-radius: var(--border-radius);
+    &::after {
+      transform: scaleY(1);
+      position: absolute;
+      @include bg-img-contain;
+      background-image: cover;
+      background-color: var(--mask-color);
+    }
+  }
+  .text {
+    top: 50%;
+    left: 50%;
+    font-size: 20vh;
+    text-align: center;
+    position: absolute;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+.click_mask:hover {
+  filter: brightness(1);
+}
+
+.active {
+  max-height: 60vh;
+  max-width: 60vh;
+  filter: brightness(1);
+  transform: rotate(0);
+}
+
+.header {
+  width: 100%;
+  height: 30%;
+  .cover {
+    height: 100%;
+    @include bg-img-contain;
+  }
+}
+
+/* content and mask */
+.content {
+  // height:70%; 不要head，不需要
+  height: 100%;
+  position: relative;
+  opacity: 1;
+}
+.mask,
+.gifts_box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.gifts_box {
+  z-index: var(--default-zindex);
+  .gifts_bg {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    @include bg-img-contain;
+    background-size: cover;
+    background-color: var(--mask-color);
+    background-image: url('../../../assets/imgs/user-check/screen.jpg');
+  }
+}
+.user-list {
+  padding: 0;
+  margin: 0;
+  font-size: 4rem;
+  columns: 3 auto;
+  overflow: hidden;
+  list-style: none;
+  position: relative;
+  z-index: calc(var(--default-zindex) * 3);
+}
+.item {
+  padding: 10px 0px;
+  position: relative;
+  &::before {
+    content: '';
+    bottom: 0;
+    height: 10%;
+    width: 100%;
+    position: absolute;
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+    transform-origin: left bottom;
+    border-bottom: 2px solid black;
+  }
+  &:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+.mask {
+  @include bg-img-contain;
+  background-size: cover;
+  // border-radius: var(--border-radius);
+  z-index: calc(var(--default-zindex) * 2);
+}
+
+/* 只剩下一张图片时，将其放大显示 */
+.card-big {
+  /* 350 * 1.5... scale 无法控制手机端的大小... */
+  // transform: scale(1.5);
+  height: 90vh;
+  width: 90vw;
+  min-width: 350px;
+  min-height: 350px;
+  max-width: 500px;
+  max-height: 500px;
+}
+
+/* 将内容移动到居中 */
+.card-center {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+/* 删除无关DOM */
+.card-delete {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.scale {
+  transform: scale(0.5);
+}
+
+/* 300 < x < 750 */
+@media screen and (min-width: 300px) {
+}
+
+/* 750 < x < 1204 */
+@media screen and (min-width: 750px) {
+}
+
+/* > 1204 */
+@media screen and (min-width: 1204px) {
+}

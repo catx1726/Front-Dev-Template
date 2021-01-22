@@ -1,18 +1,96 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{ 'Scratch-Card.Title' | translate}}</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <div class="scratches_container">
-    <app-scratch-card-component></app-scratch-card-component>
-    <div class="btn_container">
-      <ion-fab vertical="bottom" horizontal="end">
-        <ion-fab-button>
-          <ion-icon name="reload"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
+<main class="content_container">
+  <div class="left words_container">
+    <div class="words">
+      <span>牛</span>
+      <span>转</span>
+      <span>乾</span>
+      <span>坤</span>
     </div>
   </div>
-</ion-content>
+
+  <div class="scratches_container m-flex flex-jc-center flex-an-center flex-wrap">
+    <app-scratch-card-component
+      #scratchc
+      [parentAllData]="this"
+      *ngFor="let item of scratchCount"
+      [curCardData]="item"
+      class="scratchCardComponent"
+    ></app-scratch-card-component>
+
+    <div class="btn_container">
+      <div class="cow">
+        <img src="../../assets/imgs/index-imgs/cow.png" alt="cow" (click)="handleReload(ReloadEnum.ON_RELOAD_CLICK)" />
+        <img class="cloud" src="../../assets/imgs/index-imgs/cloud.gif" alt="cloud" />
+      </div>
+
+      <!-- <ion-fab-button>
+          <ion-icon name="reload"></ion-icon>
+        </ion-fab-button> -->
+      <!-- </ion-fab> -->
+    </div>
+  </div>
+
+  <!-- OK 切换抽奖等级，轮数也要显示在页面上 -->
+  <div class="setting-btn tooltip" [attr.data-tooltip]="'Scratch-Card.Side-Settings-ToolTip-Info'|translate">
+    <img src="../../assets/imgs/index-imgs/lanterns.gif" alt="lanterns" (click)="onShowSideSetting($event)" />
+    <!-- <ion-fab-button >
+      <ion-icon name="settings-outline"></ion-icon>
+    </ion-fab-button> -->
+  </div>
+  <div class="select-level_container box-shadow-obt-xs m-flex flex-dir-col flex-an-center hide">
+    <div class="close-setting-btn">
+      <ion-fab-button (click)="onShowSideSetting($event)">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-fab-button>
+    </div>
+
+    <div class="select_box">
+      <ion-select
+        [placeholder]="'Scratch-Card.SelectGiftsLevelPlaceholderText'|translate"
+        [value]="currentLevel"
+        cancelText="取消"
+        okText="确定"
+        (ionChange)="onGiftsLevelChange($event.detail.value)"
+      >
+        <ion-select-option *ngFor="let item of giftsLevelList" [disabled]="!item.Rest" [value]="item">
+          {{item.LevelDesc}}
+        </ion-select-option>
+      </ion-select>
+
+      <div class="gifts m-flex flex-an-center flex-dir-col">
+        <img [src]="currentLevel.ImgSrc||'../../assets/imgs/scratch-cover/car.png'" alt="gifts—img" class="gifts-img" />
+        <span>{{currentLevel.Name}}</span>
+      </div>
+    </div>
+
+    <div class="info_box m-flex flex-jc-center flex-an-start flex-jc-center flex-dir-col">
+      <div class="num text">
+        <ion-label>{{'Scratch-Card.GiftsAmount'|translate}}：</ion-label>
+        <span>{{currentLevel.Amount}}</span>
+      </div>
+      <div class="num text">
+        <ion-label>{{'Scratch-Card.GiftsSurplus'|translate}}：</ion-label>
+        <span>{{currentLevel.Rest}}</span>
+      </div>
+      <div class="num text">
+        <ion-label>{{'Scratch-Card.GiftsNumbers'|translate}}：</ion-label>
+        <ion-input
+          type="text"
+          [value]="currentLevel.Numbers"
+          debounce="500"
+          (ionChange)="onChangeNumbers($event.detail.value)"
+          autofocus="true"
+        ></ion-input>
+      </div>
+
+      <div class="num text">
+        <ion-label>{{'Scratch-Card.GiftsLimitSurplus'|translate}}：</ion-label>
+        <span>{{currentLevel.Round}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="last-win-user_container">
+    <div class="trigger-btn" [attr.data-tooltip]="'Scratch-Card.Last-User-Win-List-ToolTip-Info'|translate"></div>
+  </div>
+</main>

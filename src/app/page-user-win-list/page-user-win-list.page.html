@@ -1,0 +1,28 @@
+<main class="pg-user-win_container">
+  <!-- flower-box-start -->
+  <div class="flower mimg">
+    <img src="../../assets/imgs/user-win/svg/flower.svg" />
+  </div>
+
+  <!-- title-box-start -->
+  <div class="title_box m-flex flex-jc-center flex-an-center">
+    <div class="title">
+      <div class="text">贺报</div>
+    </div>
+  </div>
+
+  <!-- qr-box-start -->
+  <div class="qr mimg">
+    <img src="../../assets/imgs/user-win/svg/qrbg.svg" />
+  </div>
+
+  <!-- u-list-start 💂‍♂️ -->
+  <div class="ulist m-flex flex-jc-center">
+    <ul>
+      <li *ngFor="let uItem of showUserList">
+        <span class="name">{{uItem.Participation.Name}}--</span>
+        <span class="gifts">{{uItem.LevelDesc}}</span>
+      </li>
+    </ul>
+  </div>
+</main>

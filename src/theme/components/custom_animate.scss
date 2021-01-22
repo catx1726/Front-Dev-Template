@@ -1,0 +1,83 @@
+.anim {
+  --name: 'shake';
+  --duration: '5s';
+  --transition: 'ease';
+  --shake-base-deg: 5deg;
+  --shew-x-base: 10px;
+}
+/* shake */
+.anim.shake {
+  /* 
+  TODO
+  一切属性都应该可配置  
+   */
+  animation: shake 2.5s ease;
+}
+.anime.skew {
+  animation: skew 2.5s ease;
+}
+
+@keyframes skew {
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(calc(var(--shake-base-deg) * -2));
+  }
+
+  8% {
+    transform: rotate(calc(var(--shake-base-deg) * 2));
+  }
+
+  10% {
+    transform: rotate(calc(var(--shake-base-deg) * 2));
+  }
+
+  18% {
+    transform: rotate(calc(var(--shake-base-deg) * -2));
+  }
+
+  20% {
+    transform: rotate(calc(var(--shake-base-deg) * -2));
+  }
+
+  28% {
+    transform: rotate(calc(var(--shake-base-deg) * 2));
+  }
+
+  30% {
+    transform: rotate(calc(var(--shake-base-deg) * 2));
+  }
+
+  38% {
+    transform: rotate(calc(var(--shake-base-deg) * -2));
+  }
+
+  40% {
+    transform: rotate(calc(var(--shake-base-deg) * -2));
+  }
+
+  48% {
+    transform: rotate(calc(var(--shake-base-deg) * 2));
+  }
+
+  50% {
+    transform: rotate(calc(var(--shake-base-deg) * 2));
+  }
+
+  58% {
+    transform: rotate(calc(var(--shake-base-deg) * -2));
+  }
+
+  60% {
+    transform: rotate(calc(var(--shake-base-deg) * -2));
+  }
+
+  68% {
+    transform: rotate(calc(var(--shake-base-deg) * 2));
+  }
+
+  75% {
+    transform: rotate(0deg);
+  }
+}

@@ -264,14 +264,14 @@ export class AudioService {
 
   async longPressRecordAudio(callback) {
     if (this.isDisabled) {
-      await this.hintTools.presentToast(UNABLE_LOAD_USER_MEDIA);
+      await this.hintTools.presentToast({ message: UNABLE_LOAD_USER_MEDIA });
       return;
     }
     Utils.debugLog('\n\nmouse down');
     this.callback = callback;
     this.changeState(StateEnum.WAITING);
     await this.clearToast(this.recorderToast);
-    this.recorderToast = await this.hintTools.createToast('长按1秒后开始录音', 0);
+    this.recorderToast = await this.hintTools.createToast({ message: '长按1秒后开始录音', duration: 0 });
     this.recorderToast.present();
     this.touchTimer = setTimeout(() => {
       //todo 切换toast或其文本时松手会无法捕获mouse up事件
@@ -323,7 +323,7 @@ export class AudioService {
     //region
     this.clearToast(this.recorderToast);
     this.changeState(StateEnum.UNOCCUPIED);
-    let loader = await this.hintTools.createLoader('转换中');
+    let loader = await this.hintTools.createLoader({ message: '转换中' });
     loader.present();
     let response;
     //endregion

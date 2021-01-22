@@ -1,0 +1,127 @@
+@import '../../theme/utils/mixins.scss';
+.index_container {
+  --bg-color: #eedfc1;
+  --main-ft-color: #f65736;
+  --couplet-ft-color: black;
+  --cn-ft-color: black;
+  --line-height: 0.8;
+  --ft-size: 10vw;
+  --couplet-h: 25vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color: var(--bg-color);
+  background-image: url('../../assets/imgs/index-imgs/bg.svg');
+  * {
+    user-select: none;
+  }
+}
+
+.words {
+  font-size: 10vw;
+}
+
+.left,
+.center,
+.right {
+  height: 100vh;
+}
+.left {
+  width: 30vw;
+  .year {
+    font-weight: bolder;
+    color: var(--main-ft-color);
+    line-height: var(--line-height);
+  }
+}
+.center {
+  left: 50%;
+  top: 50%;
+  width: 50vw;
+  height: auto;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  img {
+    object-fit: contain;
+  }
+  .words {
+    left: -5vw;
+    width: 10vw;
+    font-size: 10vw;
+    position: absolute;
+    display: inline-block;
+    font-family: 'Zhi Mang Xing';
+    span:nth-child(odd) {
+      display: inline-block;
+      margin-right: 10px;
+      transform: translateX(-5vw);
+    }
+  }
+  .cow {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    .cloud {
+      left: 0;
+      width: 100%;
+      z-index: -1;
+      bottom: -10vh;
+      position: absolute;
+    }
+  }
+}
+.right {
+  top: 0;
+  right: 0;
+  width: 20vw;
+  position: absolute;
+  .lanters {
+    right: -5vw;
+    height: 50vh;
+    position: absolute;
+  }
+  .bottom {
+    // 优化可提出
+    right: 2vw;
+    bottom: 0;
+    position: absolute;
+  }
+  .couplet {
+    width: 6vw;
+    max-width: 8vw;
+    min-width: 100px;
+    position: relative;
+    height: var(--couplet-h);
+
+    // line
+    &::before {
+      content: '';
+      width: 2px;
+      top: 55%;
+      left: 50%;
+      position: absolute;
+      border-radius: 3px;
+      transform: translate(-50%, -50%);
+      height: calc(var(--couplet-h) - 10vh);
+      background-color: var(--couplet-ft-color);
+    }
+    // words
+    span {
+      bottom: 5vh;
+      position: absolute;
+      writing-mode: vertical-lr;
+      color: var(--couplet-ft-color);
+      font-family: 'Zhi Mang Xing';
+      font-size: 3rem;
+    }
+    span:nth-child(odd) {
+      right: 0;
+    }
+    &:hover span {
+      color: white;
+    }
+  }
+}

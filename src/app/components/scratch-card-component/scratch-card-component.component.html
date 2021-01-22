@@ -1,3 +1,21 @@
-<p>
-  scratch-card-component works!
-</p>
+<div class="card_container">
+  <!-- 用户选择的时候，点击的这个元素，当用户确定选择之后，移除该元素 和 其他 未选中的卡片，给当前卡加事件 -->
+  <div class="click_mask">
+    <div class="text">
+      {{ curCardData.text }}
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="gifts_box m-flex flex-jc-center flex-an-center flex-dir-col">
+      <div>恭喜以下用户：</div>
+      <ul class="user-list">
+        <!-- <li class="item" *ngFor="let item of uList">
+          {{ item.uname }}
+        </li> -->
+      </ul>
+      <div class="gifts_bg"></div>
+    </div>
+    <canvas class="mask"></canvas>
+  </div>
+</div>

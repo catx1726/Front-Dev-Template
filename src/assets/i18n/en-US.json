@@ -1,17 +1,48 @@
 {
   "Side-Menu": {
+    "Index": "Index",
     "Scratch-Card": "Scratch-Card",
+    "User-Win-List": "User-Win-List",
+    "Check-List": "Check-List",
     "Inbox": "Inbox",
     "Spam": "Spam",
-    "Title": "SideMenu"
+    "Title": "SideMenu",
+    "Login": "Sign In",
+    "Quit": "Sign Out"
   },
   "Scratch-Card": {
-    "Title": "2021 Good luck in the year of the ox"
+    "Title": "2021 Good luck in the year of the ox",
+    "LimitDeplete": "Run out of rounds",
+    "SelectGiftsLevelPlaceholderText": "Change the gift level",
+    "GiftsLimitSurplus": "GiftsLimitSurplus",
+    "CurrentGiftsName": "CurrentGift",
+    "SetLevelNumbers": "SetLevelNumbers",
+    "GiftsAmount": "GiftsAmount",
+    "GiftsNumbers": "GiftsNumbers",
+    "GiftsSurplus": "GiftsSurplus"
+  },
+  "Index": {
+    "Title": "Index"
+  },
+  "Check-List": {
+    "Title": "Check-List"
   },
   "Inbox": {
     "Title": "Inbox"
   },
   "Spam": {
     "Title": "Spam"
+  },
+  "Login": {
+    "Title": "2021 Gifts System",
+    "UName": "User Name",
+    "UPassWord": "User PassWord",
+    "BTN-Login": "Launch",
+    "Erorr-Require": "OooOps You didn't fill in anything",
+    "Error-PSW": "Perhaps The password is wrong",
+    "Error-Name": "Username does not exist"
+  },
+  "GuardInfo": {
+    "NoAuth": "You need Login"
   }
 }

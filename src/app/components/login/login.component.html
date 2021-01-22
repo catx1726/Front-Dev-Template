@@ -1,0 +1,44 @@
+<div class="login_box">
+  <div class="form_title">{{ 'Login.Title' | translate }}</div>
+  <form>
+    <div>
+      <label class="form_label name" for="login_name">
+        <ion-icon name="person-outline"></ion-icon>
+      </label>
+      <input
+        type="text"
+        class="form_input name"
+        id="login_name"
+        [placeholder]="'Login.UName' | translate"
+        [(ngModel)]="all.userInfoForm.UserName"
+        [ngModelOptions]="{ standalone: true }"
+        (keyup)="$event.which === 13 ? all.login() : ''"
+      />
+    </div>
+
+    <div *ngIf="all.config.needPassword">
+      <label class="form_label password" for="login_password">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+      </label>
+      <input
+        type="password"
+        class="form_input password"
+        id="login_password"
+        [(ngModel)]="all.userInfoForm.Password"
+        [ngModelOptions]="{ standalone: true }"
+        [placeholder]="'Login.UPassWord' | translate"
+        (keyup)="$event.which === 13 ? all.login() : ''"
+      />
+    </div>
+  </form>
+  <ion-button
+    size="small"
+    shape="round"
+    fill="clear"
+    class="form_btn-submit"
+    [disabled]="all.config.loginLock"
+    (click)="all.login()"
+  >
+    {{ 'Login.BTN-Login' | translate }}
+  </ion-button>
+</div>

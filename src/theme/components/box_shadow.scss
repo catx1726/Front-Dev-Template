@@ -1,0 +1,29 @@
+/* 参考 https://codepen.io/sdthornton/pen/wBZdXq */
+.box-shadow-obt-lg {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+.box-shadow-obt-l {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.box-shadow-obt-m {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.box-shadow-obt-s {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.box-shadow-obt-xs {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+/* 自定义 */
+.m_box-shadow-obt-lg {
+  box-shadow: 10px 5px 30px -5px black;
+}
+// 比较浅的效果，虚化范围比较小
+.m_box-shadow-obt-s {
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.1), 0 3px 20px rgba(0, 0, 0, 0.1);
+}
+// 非常浅的效果，虚化范围也很小
+.m_box-shadow-obt-xs {
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.05), 0 3px 10px rgba(0, 0, 0, 0.05);
+}

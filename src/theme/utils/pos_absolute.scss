@@ -1,0 +1,20 @@
+.pos-ab {
+  position: absolute;
+}
+.left {
+  left: 0;
+}
+.right {
+  right: 0;
+}
+.top {
+  top: 0;
+}
+.bottom {
+  bottom: 0;
+}
+.center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

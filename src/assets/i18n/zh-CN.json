@@ -1,17 +1,49 @@
 {
   "Side-Menu": {
+    "Index": "首页",
     "Scratch-Card": "刮刮乐",
+    "User-Win-List": "获奖用户",
+    "Check-List": "核销名单",
     "Inbox": "收件箱",
     "Spam": "垃圾邮件",
-    "Title": "侧边栏"
+    "Title": "侧边栏",
+    "Login": "登录",
+    "Quit": "退出"
   },
+  "Index": { "Title": "首页" },
   "Scratch-Card": {
-    "Title": "2021牛年大吉"
+    "Title": "2021牛年大吉",
+    "LimitDeplete": "这是最后一轮啦",
+    "GiftsAmount": "奖品数量",
+    "GiftsNumbers": "每轮抽",
+    "GiftsSurplus": "剩余奖品",
+    "GiftsLimitSurplus": "剩余轮数",
+    "CurrentGiftsName": "当前奖品",
+    "SetLevelNumbers": "设定奖品每轮中奖人数",
+    "SelectGiftsLevelPlaceholderText": "切换抽奖级别",
+    "Side-Settings-ToolTip-Info": "点我打开侧边栏配置",
+    "Last-User-Win-List-ToolTip-Info": "点我查看上一轮中奖名单"
   },
+  "Check-List": { "Title": "中奖名单" },
   "Inbox": {
     "Title": "收件箱"
   },
   "Spam": {
     "Title": "垃圾邮件"
+  },
+  "Login": {
+    "Title": "2021年抽奖平台",
+    "UName": "用户名",
+    "UPassWord": "用户密码",
+    "BTN-Login": "登录",
+    "Erorr-Require": "不得为空",
+    "Error-PSW": "密码错误",
+    "Error-Name": "用户名不存在"
+  },
+  "GuardInfo": {
+    "NoAuth": "您没有权限，请先登录"
+  },
+  "HintInfo": {
+    "InvalidValues": "非法值,请重新输入"
   }
 }

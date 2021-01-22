@@ -1,4 +1,4 @@
-export const APP_NAME = 'CAD';
+export const APP_NAME = '水务项目文明施工检查';
 
 export const COMPANY_LATITUDE = '30.441788017481358';
 
@@ -8,9 +8,10 @@ export const HOME_PATH = '/proj/proj-local-list';
 
 export const TMAP_REFERER = 'HS-Inspec';
 
-export const TMAP_KEY = 'CAD';
+export const TMAP_KEY = 'MQUBZ-7FIC5-TP5ID-QUWXF-BJRE5-F4BN5';
 
-export const TMAP_DOWNLOAD_PATH = 'https://mapdownload.map.qq.com/index?channel=10029633&key=personal&referer=CAD';
+export const TMAP_DOWNLOAD_PATH =
+  'https://mapdownload.map.qq.com/index?channel=10029633&key=personal&referer=MQUBZ-7FIC5-TP5ID-QUWXF-BJRE5-F4BN5';
 
 export const TMAP_URL_SCHEME = 'qqmap://map/routeplan';
 
@@ -18,7 +19,7 @@ export const TMAP_URI_API = 'https://apis.map.qq.com/uri/v1/';
 
 export const AMAP_SRC = 'wrpr';
 
-export const AMAP_KEY = 'CAD';
+export const AMAP_KEY = 'a80bb170d72c39bf9b262ab843365a51';
 
 export const AMAP_DOWNLOAD_PATH = 'https://';
 
@@ -53,3 +54,7 @@ export const UNABLE_LOAD_USER_MEDIA = '无法获取录音设备';
 export const ANIMATE_EASE_TIME = 1000;
 
 export const MAP_MAX_AUTO_ZOOM = 17;
+
+export const UID_KEY = 'uid-key';
+
+export const U_TOKEN_KAY = 'u-token-key';

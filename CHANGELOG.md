@@ -42,13 +42,3 @@ scopes: [
 # Unreleased
 
 # Release(TEST)
-
-## V0.000010 - 2020-10-13
-
-### FEAT ( Relocal-Map-Page )
-
-1. 新增，矫正定位之后进行保存
-
-### FIX ( Map )
-
-1. 修复，地图聚合时，不弹出 info-window

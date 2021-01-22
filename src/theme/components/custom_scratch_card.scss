@@ -1,0 +1,18 @@
+.scratches_container .card_container .content .user-list .item {
+  padding: 10px 0px;
+  position: relative;
+  &::before {
+    content: '';
+    bottom: 0;
+    height: 10%;
+    width: 100%;
+    position: absolute;
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+    transform-origin: left bottom;
+    border-bottom: 2px solid black;
+  }
+  &:hover::before {
+    transform: scaleX(1);
+  }
+}

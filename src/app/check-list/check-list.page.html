@@ -1,0 +1,68 @@
+<!-- <main class="pg-check_container">
+  flower-box-start
+  <div class="flower mimg">
+    <img src="../../assets/imgs/user-win/svg/flower.svg" />
+  </div>
+
+  title-box-start
+  <div class="title_box m-flex flex-jc-center flex-an-center">
+    <div class="title">
+      <div class="text">核销</div>
+    </div>
+    <div class="search">
+      <ion-searchbar></ion-searchbar>
+    </div>
+  </div>
+
+  qr-box-start
+  <div class="qr mimg">
+    <img src="../../assets/imgs/user-win/svg/qrbg.svg" />
+  </div>
+
+  u-list-start 💂‍♂️
+  <div class="ulist m-flex flex-jc-center">
+    <ul>
+      <li>
+        张三:
+        <span class="state checked" (click)="onStateChange($event)">已核销</span>
+        <span class="state nocheck" (click)="onStateChange($event)">未核销</span>
+      </li>
+    </ul>
+  </div>
+</main> -->
+
+<main class="pg-check_container m-flex flex-jc-center">
+  <ion-grid class="table">
+    <ion-row class="table-title mg-bt-30 m-flex flex-jc-center">核销</ion-row>
+    <ion-row class="table-search mg-bt-30 m-flex flex-jc-center">
+      <ion-col size="4">
+        <ion-searchbar
+          debounce="500"
+          placeholder="输入用户名搜索"
+          (ionChange)="onSearch($event.detail.value)"
+        ></ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <ion-row class="table_head text-center">
+      <ion-col class="name">用户名</ion-col>
+      <ion-col class="gifts">奖品</ion-col>
+      <ion-col class="state">领奖状态</ion-col>
+    </ion-row>
+    <ion-row class="table_body text-center" *ngFor="let uItem of showUserList">
+      <ion-col class="name">{{uItem.Participation.Name}}</ion-col>
+      <ion-col class="gifts">{{uItem.LevelDesc}}</ion-col>
+      <ion-col class="state">
+        <ion-radio-group
+          [value]="uItem.State"
+          class="mradio-group m-flex flex-jc-center"
+          (ionChange)="onStateChange($event.detail.value,uItem)"
+        >
+          <ion-item *ngFor="let item of checkStateList">
+            <ion-label>{{item.text}}</ion-label>
+            <ion-radio slot="start" [value]="item.value" [disabled]="uItem.State"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</main>
