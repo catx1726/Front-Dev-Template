@@ -1,5 +1,11 @@
 import colors from 'vuetify/es5/util/colors'
+// Doc: https://github.com/nuxt-community/dotenv-module
 import dotenv from 'dotenv'
+
+/*
+  在项目根目录中创建.env文件后，只需运行您的常用文件npm run dev。
+  .env文件中的变量将被添加到context（context.env）和process（process.env）中
+*/
 dotenv.config()
 
 export default {
@@ -8,7 +14,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    titleTemplate: '%s - NuxtTemplate',
+    titleTemplate: '%s - Vue-Nuxt-Vuetify-Template',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -98,23 +104,24 @@ export default {
       }
     }
   },
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
     proxy: true,
-    credentials: true
+    prefix: process.env.API_URL || 'localhost:3000'
   },
   proxy: {
-    changeOrigin: true,
-    '/bing': {
-      target: 'http://cn.bing.com', // 代理地址 await this.$axios.$get('/bing/HPImageArchive.aspx?format=js&idx=0&n=1')
-      changeOrigin: true,
-      pathRewrite: {
-        '^/bing': '' // 将 /bing 替换掉
-      }
-    }
+    changeOrigin: true
+    // '/bing': {
+    //   target: 'http://cn.bing.com', // 代理地址 await this.$axios.$get('/bing/HPImageArchive.aspx?format=js&idx=0&n=1')
+    //   changeOrigin: true,
+    //   pathRewrite: {
+    //     '^/bing': '' // 将 /bing 替换掉
+    //   }
+    // }
   },
   /*
    ** vuetify module configuration
@@ -144,6 +151,27 @@ export default {
     /*
      ** You can extend webpack config here
      */
+    terser: {
+      terserOptions: {
+        compress: {
+          drop_console: true
+        }
+      }
+    },
+
+    analyze: true,
+
+    minimize: true,
+
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        minSize: 10000,
+        maxSize: 250000
+      }
+    },
+
+    maxChunkSize: 30000,
 
     postcss: {
       plugins: {},
@@ -155,5 +183,9 @@ export default {
       }
     },
     extend(config, ctx) {}
+  },
+
+  router: {
+    base: '/'
   }
 }

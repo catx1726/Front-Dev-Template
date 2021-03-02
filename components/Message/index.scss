@@ -1,0 +1,20 @@
+.message_container {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.6);
+  .content {
+    width: 50%;
+    height: 25%;
+    font-size: 3rem;
+    position: relative;
+  }
+  .close {
+    right: 0;
+    top: 0;
+    position: absolute;
+    font-size: 1.5rem;
+  }
+}

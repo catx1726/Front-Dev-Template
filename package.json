@@ -1,7 +1,7 @@
 {
-  "name": "nuxt-template",
+  "name": "Vue-Nuxt-Vuetify-Template",
   "version": "1.0.0",
-  "description": "nuxt-template",
+  "description": "Vue-Nuxt-Vuetify-Template",
   "author": "catx1726",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "eslint:fix": "eslint \"*.{vue,js,ts}\" --fix",
-    "format": "prettier --write \"./**/*.{js,jsx,css,less,html}\""
+    "format": "prettier --write \"./**/*.{vue,js,jsx,css,scss,less,html}\""
   },
   "dependencies": {
     "@nuxtjs/auth": "^4.9.1",
@@ -26,7 +26,6 @@
     "@nuxtjs/style-resources": "^1.0.0",
     "@nuxtjs/vuetify": "^1.0.0",
     "babel-eslint": "^10.0.1",
-    "cz-conventional-changelog": "^3.2.0",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-nuxt": ">=0.4.2",
@@ -43,15 +42,10 @@
     }
   },
   "lint-staged": {
-    "*.{ts,js,css,less,html,vue}": [
+    "*.{ts,js,css,less,scss,html,vue}": [
       "npm run format",
       "npm run eslint:fix",
       "git add ."
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }

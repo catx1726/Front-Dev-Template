@@ -3,9 +3,9 @@ module.exports = {
   // trailingComma: 'all',
   // 末尾不需要逗号,注意与 eslint 的冲突
   trailingComma: 'none',
-  // 一行最多 100 字符,与eslint 有冲突
+  // 一行最多 120 字符,照顾笔记本电脑开发者,与eslint 有冲突
   printWidth: 100,
-  // 使用 2 个空格缩进
+  // 使用2个空格缩进
   tabWidth: 2,
   // 不使用缩进符，而使用空格
   useTabs: false,

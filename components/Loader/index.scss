@@ -1,0 +1,52 @@
+.loader_container {
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transition: all 0.5s ease;
+  transform: translate(-50%, -50%);
+  --base-w-h: 60px;
+  --base-anim-duration: 2.5s;
+}
+.loader {
+  height: var(--base-w-h);
+  width: var(--base-w-h);
+  position: relative;
+}
+.loader .outcubic {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.loader::before,
+.loader::after,
+.loader .outcubic {
+  content: '';
+  border: thick double black;
+  transition: all 0.3s linear;
+}
+.loader::before,
+.loader::after {
+  position: absolute;
+}
+.loader::after {
+  height: calc(var(--base-w-h) / 1.9);
+  width: calc(var(--base-w-h) / 1.9);
+  animation: mRotateOne var(--base-anim-duration) linear infinite reverse;
+}
+.loader::before {
+  height: calc(var(--base-w-h) / 5);
+  width: calc(var(--base-w-h) / 5);
+}
+.loader::before,
+.loader .outcubic {
+  animation: mRotateOne calc(var(--base-anim-duration) / 1.2) linear infinite;
+}
+
+@keyframes mRotateOne {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
