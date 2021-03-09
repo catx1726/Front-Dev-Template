@@ -1,19 +1,65 @@
-/* DOC 如果涉及到分包，请看文档 https://uniapp.dcloud.io/collocation/pages?id=subpackages */
 {
   "pages": [
     {
       "path": "pages/index/index",
       "style": {
         "navigationBarTitleText": "首页"
-      }
+      },
+      "public": true
     },
     {
       "path": "pages/about/index",
       "style": {
         "navigationBarTitleText": "关于我"
-      }
+      },
+      "public": true
     }
   ],
+  "subpackages": [
+    {
+      "root": "pages/sub-packages-one-pages",
+      "pages": [
+        {
+          "path": "login-page/index",
+          "style": {
+            "navigationBarTitleText": "登录界面",
+            "app-plus": {
+              "titleNView": {
+                "autoBackButton": "false"
+              }
+            }
+          },
+          "public": true
+        },
+        {
+          "path": "need-auth-page/index",
+          "style": {
+            "navigationBarTitleText": "登录解锁更多功能",
+            "app-plus": {
+              "titleNView": {
+                "autoBackButton": "false"
+              }
+            }
+          },
+          "public": true
+        }
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": ["__APP__"]
+    },
+    "pages/about/index": {
+      "network": "all",
+      "packages": ["__APP__"]
+    },
+    "pages/sub-packages-one-pages/need-auth-page/index": {
+      "network": "all",
+      "packages": ["pages/sub-packages-one-pages"]
+    }
+  },
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "tacomall",

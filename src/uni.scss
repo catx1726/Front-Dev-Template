@@ -75,16 +75,20 @@ $uni-font-size-subtitle: 36rpx;
 $uni-color-paragraph: #3f536e; // 文章段落颜色
 $uni-font-size-paragraph: 30rpx;
 
-@import './assets/scss/main.scss';
+@import './assets/scss/normalize/main.scss';
+@import './assets/scss//normalize/uni_ui_reset.scss';
 
-/* custom-flex-layout */
-@import './assets/scss/flex_layout.scss';
+/* Utils 🔨 */
+/* custom-utils-flex-layout */
+@import './assets/scss/utils/flex_layout.scss';
+/* custom-utils-text */
+@import './assets/scss/utils/text.scss';
 
-/* custom-text */
-@import './assets/scss/text.scss';
-
-/* custom-box-shadow */
-@import './assets/scss/box_shadow.scss';
+/* Components 🔩 */
+/* custom-components-box-shadow */
+@import './assets/scss/components/box_shadow.scss';
+@import './assets/scss/components/ul_li.scss';
+@import './assets/scss/components/custom_font.scss';
 
 /* custom-icon-font */
 @import './static/icon/iconfont/iconfont.scss';

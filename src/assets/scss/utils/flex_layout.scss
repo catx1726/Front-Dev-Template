@@ -18,7 +18,7 @@ $flex-an: (
   stretch: stretch
 );
 
-$flex-wp: warp, nowrap;
+$flex-wp: wrap, nowrap;
 
 .m-flex {
   display: flex;

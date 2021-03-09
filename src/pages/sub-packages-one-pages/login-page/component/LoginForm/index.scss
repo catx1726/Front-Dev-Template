@@ -9,6 +9,10 @@ $selected-btn-color: #000000;
   background-position: center;
   position: relative;
 }
+.info_container {
+  --info-color: grey;
+  --info-ft-size: 0.8rem;
+}
 .form_container .title {
   min-width: 5rem;
   max-width: 10rem;
@@ -25,8 +29,21 @@ $selected-btn-color: #000000;
   letter-spacing: 50px;
   // 校准
   padding-left: 50px;
+  // 与 来宾登录界面 margin 保持一致
+  margin-bottom: 1rem;
   // reset
   padding-right: 0px;
   text-align: center;
   background-color: $selected-btn-color;
+}
+.noauth {
+  background-color: grey;
+}
+.info_container {
+  bottom: 5px;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  color: var(--info-color);
+  font-size: var(--info-ft-size);
 }

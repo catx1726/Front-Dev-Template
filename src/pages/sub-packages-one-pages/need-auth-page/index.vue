@@ -1,7 +1,7 @@
 <template>
   <view class="m-flex flex-jc-center flex-an-center">
     <BackgroundImg class="bg-img" />
-    about-page
+    sub-package-need-auth-page
   </view>
 </template>
 
@@ -13,7 +13,7 @@ import cpop from '@/utils/uni_pop'
 import BackgroundImg from '@/components/BackgroundImg/index.vue'
 
 export default Vue.extend({
-  name: 'AboutPage',
+  name: 'SubPackNeedAuthPage',
   components: {},
   props: [],
   data() {

@@ -1,19 +1,17 @@
 <template>
-  <view class="m-flex flex-jc-center flex-an-center">
-    <BackgroundImg class="bg-img" />
-    about-page
-  </view>
+  <view class="nothing_container"></view>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import store from '@/store'
 import cpop from '@/utils/uni_pop'
 
-import BackgroundImg from '@/components/BackgroundImg/index.vue'
+const HAVE_API = false
+const CONSOLE_TAG = 'components NothingHere'
 
 export default Vue.extend({
-  name: 'AboutPage',
+  name: 'ComponentNothingHere',
   components: {},
   props: [],
   data() {
@@ -31,17 +29,9 @@ export default Vue.extend({
   created() {},
 
   onShow() {},
-
-  onReachBottom() {},
-
   methods: {}
 })
 </script>
 <style lang="scss" scoped>
 @import './index.scss';
-</style>
-<style lang="scss">
-.sign-list_container .uni-list {
-  background-color: transparent;
-}
 </style>

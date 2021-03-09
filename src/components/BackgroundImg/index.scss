@@ -1,0 +1,12 @@
+.bg-template {
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: block;
+  filter: blur(3px);
+  position: fixed;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../../static/background/about/my_personal_files.png');
+}

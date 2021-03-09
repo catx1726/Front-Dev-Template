@@ -1,31 +1,10 @@
-// index.scss
-
-.content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin: 200rpx auto 50rpx auto;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
-}
-
-.map_container-index {
+.bg {
+  top: 0;
+  z-index: 1;
   height: 100vh;
   width: 100vw;
-  max-height: 100vh;
-  max-width: 100%;
+  position: fixed;
+}
+.content-container {
+  z-index: 10;
 }
