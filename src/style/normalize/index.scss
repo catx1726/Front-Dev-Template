@@ -1,0 +1,28 @@
+* {
+  padding: 0;
+  margin: 0;
+  scrollbar-width: thin;
+  transition-timing-function: ease;
+  transition-property: color, background-color;
+}
+
+html {
+  width: 100vw;
+  max-width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a.no-underline {
+  text-decoration: none;
+}
+
+iframe {
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+
+ul {
+  list-style: none;
+}
