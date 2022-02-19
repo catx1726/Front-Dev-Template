@@ -1,5 +1,8 @@
 <template>
-  <div class="home-container">index-home</div>
+  <div class="home-container">
+    index-home
+    <svg-icon name="add"></svg-icon>
+  </div>
 </template>
 
 <script lang="ts">
@@ -18,7 +21,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.home-container{
+.home-container {
   font-size: 2rem;
 }
 </style>

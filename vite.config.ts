@@ -1,10 +1,11 @@
-import { defineConfig } from 'vite'
+import * as path from 'path'
 import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
+import { defineConfig } from 'vite'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), createSvgIconsPlugin({ iconDirs: [path.resolve(process.cwd(), 'src/icons/svg')] })],
   build: {
     minify: 'terser',
     terserOptions: {
@@ -16,7 +17,7 @@ export default defineConfig({
     }
   },
   base: './',
-  resolve: { alias: { '@': resolve('./src') } },
+  resolve: { alias: { '@': path.resolve('./src') } },
   server: {
     port: 9817,
     open: true,
