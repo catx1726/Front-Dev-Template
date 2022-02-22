@@ -1,27 +1,10 @@
-<template>
-  <div class="home-container">
-    index-home
-    <svg-icon name="add"></svg-icon>
-  </div>
-</template>
+<template>homePage</template>
 
 <script lang="ts">
 export default {
-  name: 'HomePage',
-  setup() {
-    return {}
-  },
-  mounted() {},
-  data() {
-    return {}
-  },
-  watch: {},
-  computed: {},
-  methods: {}
+  name: 'HomePage'
 }
 </script>
-<style lang="scss" scoped>
-.home-container {
-  font-size: 2rem;
-}
-</style>
+<script lang="ts" setup></script>
+
+<style lang="scss" scoped></style>

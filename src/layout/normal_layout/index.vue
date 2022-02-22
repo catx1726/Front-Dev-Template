@@ -1,5 +1,7 @@
 <template>
-  <header class="header-container text-xl h-1/5">header</header>
+  <header class="header-container text-xl">
+    <header-comp></header-comp>
+  </header>
   <main class="main-container h-4/5 bg-black text-gray">
     <router-view></router-view>
   </main>
@@ -8,19 +10,14 @@
 
 <script lang="ts">
 export default {
-  name: 'NormalLayoutPage',
-  setup() {
-    return {}
-  },
-  mounted() {},
-  data() {
-    return {}
-  },
-  watch: {},
-  computed: {},
-  methods: {}
+  name: 'NormalLayoutPage'
 }
 </script>
+
+<script lang="ts" setup>
+import HeaderComp from './header/index.vue'
+</script>
+
 <style lang="scss" scoped>
 @import url(./index.scss);
 </style>
