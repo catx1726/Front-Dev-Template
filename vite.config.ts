@@ -21,6 +21,6 @@ export default defineConfig({
     port: 9817,
     open: true,
     cors: true,
-    host: '192.168.31.19'
+    host: '192.168.2.36'
   }
 })
